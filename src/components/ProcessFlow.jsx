@@ -1,19 +1,28 @@
 import { motion } from 'framer-motion'
 
-const steps = [
-  { n: '01', title: 'Assessment', text: 'Clear mapping of goals, constraints, and risk tolerance.' },
-  { n: '02', title: 'Architecture', text: 'Design the financial structure with precise allocations.' },
-  { n: '03', title: 'Execution', text: 'Implement with disciplined timing and documentation.' },
-  { n: '04', title: 'Monitoring', text: 'Ongoing analysis with transparent reporting.' },
-]
+const content = {
+  de: [
+    { n: '01', title: 'Analyse', text: 'Präzise Erfassung von Zielen, Rahmen und Risikoprofil.' },
+    { n: '02', title: 'Architektur', text: 'Aufbau der finanziellen Struktur mit klaren Allokationen.' },
+    { n: '03', title: 'Umsetzung', text: 'Disziplinierte Implementierung mit Dokumentation.' },
+    { n: '04', title: 'Monitoring', text: 'Laufende Auswertung mit transparentem Reporting.' },
+  ],
+  en: [
+    { n: '01', title: 'Assessment', text: 'Clear mapping of goals, constraints, and risk tolerance.' },
+    { n: '02', title: 'Architecture', text: 'Design the financial structure with precise allocations.' },
+    { n: '03', title: 'Execution', text: 'Implement with disciplined timing and documentation.' },
+    { n: '04', title: 'Monitoring', text: 'Ongoing analysis with transparent reporting.' },
+  ],
+}
 
-export default function ProcessFlow() {
+export default function ProcessFlow({ lang = 'de' }) {
+  const steps = content[lang]
   return (
     <section className="relative w-full bg-[#0b0b0d] py-24">
       <div className="mx-auto max-w-6xl px-6">
         <div className="mb-12 flex items-end justify-between">
-          <h2 className="text-2xl font-semibold tracking-tight text-white/90 sm:text-3xl">Process</h2>
-          <div className="h-px flex-1 translate-y-[-4px] bg-white/10 ml-6" />
+          <h2 className="text-2xl font-semibold tracking-tight text-white/90 sm:text-3xl">{lang === 'de' ? 'Prozess' : 'Process'}</h2>
+          <div className="h-px ml-6 flex-1 translate-y-[-4px] bg-white/10" />
         </div>
         <div className="relative grid grid-cols-1 gap-6 md:grid-cols-2">
           {steps.map((s, i) => (
@@ -27,7 +36,7 @@ export default function ProcessFlow() {
             >
               <div className="mb-3 flex items-center gap-3">
                 <span className="text-4xl font-extrabold tracking-tight text-white/80">{s.n}</span>
-                <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: '#c8a96a' }} />
+                <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: 'var(--gold)' }} />
                 <span className="text-base font-medium text-white/90">{s.title}</span>
               </div>
               <p className="text-sm text-white/70">{s.text}</p>

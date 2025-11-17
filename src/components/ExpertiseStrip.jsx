@@ -7,6 +7,8 @@ export default function ExpertiseStrip() {
   useEffect(() => {
     const el = ref.current
     if (!el) return
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
+    if (mq.matches) return
     let start = null
     let raf
     const speed = 30 // px/sec

@@ -1,19 +1,28 @@
 import { motion } from 'framer-motion'
 
-const scenarios = [
-  { title: 'Entrepreneur Liquidity', points: ['Optimize cash flow buffers', 'Tax-aware distributions', 'Downside hedging'] },
-  { title: 'Family Wealth Plan', points: ['Education and legacy frames', 'Balanced growth cadence', 'Multi-account coordination'] },
-  { title: 'Property Financing', points: ['Rate strategy & amortization', 'Equity release options', 'Rental yield optimization'] },
-  { title: 'Executive Compensation', points: ['Equity vesting strategy', 'Diversification rails', 'Efficiency and risk balance'] },
-]
+const content = {
+  de: [
+    { title: 'Unternehmer-Liquidität', points: ['Cashflow-Puffer optimieren', 'Steuereffiziente Entnahmen', 'Absicherung gegen Abwärtsrisiken'] },
+    { title: 'Familienvermögen', points: ['Bildung & Nachfolge strukturieren', 'Ausgewogenes Wachstum', 'Koordination über Konten & Depots'] },
+    { title: 'Immobilienfinanzierung', points: ['Zinsstrategie & Tilgung', 'Eigenkapital freisetzen', 'Mietrendite optimieren'] },
+    { title: 'Executive Compensation', points: ['Vesting-Strategie für Equity', 'Diversifikationsleitplanken', 'Effizienz und Risikobalance'] },
+  ],
+  en: [
+    { title: 'Entrepreneur Liquidity', points: ['Optimize cash flow buffers', 'Tax-aware distributions', 'Downside hedging'] },
+    { title: 'Family Wealth Plan', points: ['Structure education & legacy', 'Balanced growth cadence', 'Multi-account coordination'] },
+    { title: 'Property Financing', points: ['Rate strategy & amortization', 'Equity release options', 'Rental yield optimization'] },
+    { title: 'Executive Compensation', points: ['Equity vesting strategy', 'Diversification rails', 'Efficiency and risk balance'] },
+  ],
+}
 
-export default function ScenariosInteractive() {
+export default function ScenariosInteractive({ lang = 'de' }) {
+  const scenarios = content[lang]
   return (
     <section className="relative w-full bg-[#0f1013] py-24">
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
         <div className="mb-10 flex items-end justify-between">
-          <h2 className="text-2xl font-semibold tracking-tight text-white/90 sm:text-3xl">Financial scenarios</h2>
-          <div className="h-px flex-1 translate-y-[-4px] bg-white/10 ml-6" />
+          <h2 className="text-2xl font-semibold tracking-tight text-white/90 sm:text-3xl">{lang === 'de' ? 'Finanzielle Szenarien' : 'Financial scenarios'}</h2>
+          <div className="h-px ml-6 flex-1 translate-y-[-4px] bg-white/10" />
         </div>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           {scenarios.map((s, i) => (
@@ -27,7 +36,7 @@ export default function ScenariosInteractive() {
             >
               <div className="mb-3 flex items-center justify-between">
                 <span className="text-sm font-semibold tracking-wide text-white/90">{s.title}</span>
-                <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: '#c8a96a' }} />
+                <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: 'var(--gold)' }} />
               </div>
               <ul className="space-y-2 text-sm text-white/70">
                 {s.points.map((p) => (
